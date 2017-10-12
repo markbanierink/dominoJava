@@ -19,8 +19,12 @@ public class Bone {
         }
     }
 
-    public int getBoneValue() {
-        return 0; // TODO boneNum (b1, b2) = sum [boneNums-b1..boneNums-1] + b2 + 1
+    public int getBoneNum(int maxBoneNum) {
+        int sum = 0;
+        for (int i = maxBoneNum - b1; i < maxBoneNum; i++) {
+            sum += i;
+        }
+        return sum + b2 + 1;
     }
 
 }

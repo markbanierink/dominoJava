@@ -5,6 +5,7 @@ package resources;
  * @author Mark Banierink on 12-10-2017.
  */
 public class Pos {
+
     private Loc loc;
     private Bone bone;
 
@@ -13,7 +14,7 @@ public class Pos {
         this.bone = bone;
     }
 
-    public Loc getLocs() {
+    public Loc getLoc() {
         return loc;
     }
 
@@ -21,7 +22,7 @@ public class Pos {
         return bone;
     }
 
-    public int getBoneValue() {
-        return bone.getBoneValue();
+    public int getBoneValue(int maxBoneNum) {
+        return bone.getBoneNum(maxBoneNum);
     }
 }

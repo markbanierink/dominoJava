@@ -1,6 +1,7 @@
 package resources;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -8,14 +9,25 @@ import java.util.Set;
  * @author Mark Banierink on 12-10-2017.
  */
 public class Grid {
-    private ArrayList<Integer> gridList;
+
+    private Map<Integer, Integer> gridList = new HashMap<>();
+    private int height;
+    private int width;
+
+    public Grid() {
+
+    }
+
+    public Grid(Set<Pos> solutions) {
+        //TODO
+    }
 
     public Grid(int[][] gridArray) {
-        int height = gridArray.length;
+        height = gridArray.length;
         for (int i = 0; i < height; i++) {
-            int width = gridArray[i].length;
+            width = gridArray[i].length;
             for (int j = 0; j < width; j++) {
-                gridList.add(width*i+j, gridArray[i][j]);
+                gridList.put(width*i+j, gridArray[i][j]);
             }
         }
     }
@@ -24,12 +36,20 @@ public class Grid {
         return gridList.get(index);
     }
 
-    public Grid(Set<Pos> solutions) {
-        //TODO
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getSize() {
+        return gridList.size();
     }
 
     public void printGrid() {
-        //TODO
+        //TODO - printf
     }
 
     public int getMax() {

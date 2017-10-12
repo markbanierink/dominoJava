@@ -14,4 +14,11 @@ public class Loc {
         this.l2 = val2;
     }
 
+    public int getL1() {
+        return l1;
+    }
+
+    public int getL2() {
+        return l2;
+    }
 }
