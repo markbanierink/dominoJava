@@ -1,7 +1,9 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import resources.Bone;
+import resources.Grid;
+import resources.Loc;
+import resources.Pos;
 
 /**
  * Domino
@@ -18,101 +20,106 @@ public class Domino {
                                               {6,0,5,3,4,2,0,3}};
 
     private Grid grid;
+    private Set<Pos> possibles;
+    private Set<Pos> solutions;
 
     public static void main (String[] args) {
         new Domino();
     }
 
     private Domino() {
-
+        initialise();
+        play();
     }
 
-    private class Grid {
-
-        private ArrayList<ArrayList<Integer>> gridArray;
-
-        public Grid(int[][] gridArray) {
-            
-        }
-
-
-
+    private void initialise() {
+        grid = new Grid(gridArray);
     }
 
-    public class Pos {
-
-        private int[] locs;
-        private int[] bone;
-
-        public Pos(int[] locs, int[] bone) {
-            this.locs = locs;
-            this.bone = bone;
-        }
-
-        public int[] getLocs() {
-            return locs;
-        }
-
-        public int[] getBone() {
-            return bone;
-        }
-
+    private void play() {
+        
     }
 
-    public class Res {
-
-        private Set<Pos> possibilities;
-        private Set<Pos> solutions;
-
-        public Res() {
-            possibilities = new HashSet<>();
-            solutions = new HashSet<>();
+    public Set<Pos> getInitialPossibles() {
+        Set<Pos> posSet = new HashSet<>();
+        int height = gridArray.length;
+        for (int i = 0; i < height-1; i++) {
+            int width = gridArray[i].length;
+            for (int j = 0; j < width-1; j++) {
+                int index = width*i+j;
+                int hIndex = index + 1;
+                int vIndex = index + width;
+                posSet.add(new Pos(new Loc(index, hIndex), new Bone(grid.get(index), grid.get(hIndex))));
+                posSet.add(new Pos(new Loc(index, vIndex), new Bone(grid.get(index), grid.get(vIndex))));
+            }
         }
-
-        public void addPossibilities(Set<Pos> possibilities) {
-            this.possibilities.addAll(possibilities);
-        }
-
-        public void addSolution(Set<Pos> solutions) {
-            this.solutions.addAll(solutions);
-        }
-
-        public void removePossibilities(Set<Pos> possibilities) {
-            this.possibilities.removeAll(possibilities);
-        }
-
-        public void removeSolutions(Set<Pos> solutions) {
-            this.solutions.removeAll(solutions);
-        }
-
-        public Set<Pos> getPossibilities() {
-            return possibilities;
-        }
-
-        public Set<Pos> getSolutions() {
-            return solutions;
-        }
-
+        return posSet;
     }
 
-    private class Tree {
-
-        private Res result;
-        private Tree tree;
-
-        public Tree(Res result) {
-            this.result = result;
-        }
-
-        public Res getResult() {
-            return result;
-        }
-
-        public Tree setTree(Tree tree) {
-            this.tree = tree;
-            return this;
-        }
+    public int getMaxGridValue() {
+        return grid.getMax();
     }
+
+//    /**
+//     * inner class representing a Result set
+//     */
+//    public class Res {
+//
+//        private Set<Pos> possibilities;
+//        private Set<Pos> solutions;
+//
+//        public Res() {
+//            possibilities = new HashSet<>();
+//            solutions = new HashSet<>();
+//        }
+//
+//        public void addPossibilities(Set<Pos> possibilities) {
+//            this.possibilities.addAll(possibilities);
+//        }
+//
+//        public void addSolution(Set<Pos> solutions) {
+//            this.solutions.addAll(solutions);
+//        }
+//
+//        public void removePossibilities(Set<Pos> possibilities) {
+//            this.possibilities.removeAll(possibilities);
+//        }
+//
+//        public void removeSolutions(Set<Pos> solutions) {
+//            this.solutions.removeAll(solutions);
+//        }
+//
+//        public Set<Pos> getPossibilities() {
+//            return possibilities;
+//        }
+//
+//        public Set<Pos> getSolutions() {
+//            return solutions;
+//        }
+//
+//    }
+//
+//    /**
+//     * inner class representing a Tree with solutions
+//     */
+//    private class Tree {
+//
+//        private Res result;
+//        private Tree tree;
+//
+//        public Tree(Res result) {
+//            this.result = result;
+//        }
+//
+//        public Res getResult() {
+//            return result;
+//        }
+//
+//        public Tree setTree(Tree tree) {
+//            this.tree = tree;
+//            return this;
+//        }
+//    }
 
 }
 
