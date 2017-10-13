@@ -1,12 +1,12 @@
 package resources;
 
 /**
- * resources.Bone
+ * Bone
  * @author Mark Banierink on 12-10-2017.
  */
 public class Bone {
 
-    private static final int MAX_BONE_VALUE = 6;
+    private static final int BONE_NUMS = 7;
 
     private int b1;
     private int b2;
@@ -15,7 +15,8 @@ public class Bone {
         if (val1 <= val2) {
             this.b1 = val1;
             this.b2 = val2;
-        } else {
+        }
+        else {
             this.b1 = val2;
             this.b2 = val1;
         }
@@ -23,10 +24,9 @@ public class Bone {
 
     public int getBoneNum() {
         int sum = 0;
-        for (int i = MAX_BONE_VALUE - b1; i < MAX_BONE_VALUE; i++) {
+        for (int i = BONE_NUMS - b1; i < BONE_NUMS; i++) {
             sum += i;
         }
         return sum + b2 + 1;
     }
-
 }

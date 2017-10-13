@@ -1,15 +1,15 @@
 package resources;
 
 /**
- * resources.Loc
+ * Location
  * @author Mark Banierink on 12-10-2017.
  */
-public class Loc {
+public class Location {
 
     private int l1;
     private int l2;
 
-    public Loc(int val1, int val2) {
+    public Location(int val1, int val2) {
         this.l1 = val1;
         this.l2 = val2;
     }
@@ -22,8 +22,7 @@ public class Loc {
         return l2;
     }
 
-    public boolean isNeighbour(Loc loc) {
-        return l1 == loc.getL1() || l1 == loc.getL2() || l2 == loc.getL1() || l2 == loc.getL2();
+    public boolean isNeighbour(Location location) {
+        return l1 == location.getL1() || l1 == location.getL2() || l2 == location.getL1() || l2 == location.getL2();
     }
-
 }
