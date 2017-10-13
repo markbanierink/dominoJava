@@ -26,9 +26,9 @@ public class ResultSet {
         this.solutions = solutions;
     }
 
-    public boolean isReady() {
+    public boolean isReady(int height, int width) {
         solve();
-        return solutions.size() == 28; // TODO - make more dynamic
+        return solutions.size() == height * width / 2;
     }
 
     private void solve() {

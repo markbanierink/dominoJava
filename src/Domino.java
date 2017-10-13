@@ -36,7 +36,7 @@ public class Domino {
     }
 
     private void play(ResultSet resultSet) {
-        if (resultSet.isReady()) {
+        if (resultSet.isReady(height, width)) {
             solutionGrids.add(resultSet.getResult(height, width));
         }
         else {
