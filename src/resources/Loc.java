@@ -21,4 +21,9 @@ public class Loc {
     public int getL2() {
         return l2;
     }
+
+    public boolean isNeighbour(Loc loc) {
+        return l1 == loc.getL1() || l1 == loc.getL2() || l2 == loc.getL1() || l2 == loc.getL2();
+    }
+
 }

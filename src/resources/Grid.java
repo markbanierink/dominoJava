@@ -10,6 +10,8 @@ import java.util.Set;
  */
 public class Grid {
 
+    private static final String FORMAT = " %2d ";
+
     private Map<Integer, Integer> gridList = new HashMap<>();
     private int height;
     private int width;
@@ -18,8 +20,8 @@ public class Grid {
 
     }
 
-    public Grid(Set<Pos> solutions) {
-        //TODO
+    public Grid(Map<Integer,Integer> gridList) {
+        this.gridList = gridList;
     }
 
     public Grid(int[][] gridArray) {
@@ -29,6 +31,18 @@ public class Grid {
             for (int j = 0; j < width; j++) {
                 gridList.put(width*i+j, gridArray[i][j]);
             }
+        }
+    }
+
+    public Map<Integer, Integer> getGridList() {
+        return gridList;
+    }
+
+    public void add(Set<Pos> solutions) {
+        for (Pos pos : solutions) {
+            int boneNum = pos.getBoneNum();
+            gridList.put(pos.getLoc().getL1(), boneNum);
+            gridList.put(pos.getLoc().getL2(), boneNum);
         }
     }
 
@@ -48,11 +62,20 @@ public class Grid {
         return gridList.size();
     }
 
-    public void printGrid() {
-        //TODO - printf
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        for (int i = 0; i < height; i++) {
+            string.append("\n");
+            for (int j = 0; j < width; j++) {
+                string.append(String.format(FORMAT, get(width*i + j)));
+            }
+            string.append("\n\n");
+        }
+        return string.toString();
     }
 
-    public int getMax() {
-        return 0; // TODO
+    public int getElementWidth() {
+        return FORMAT.length();
     }
 }

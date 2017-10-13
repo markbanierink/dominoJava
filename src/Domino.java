@@ -37,7 +37,7 @@ public class Domino {
         if (resultSet.isReady()) {
             solutions.add(resultSet.getResult());
         } else {
-            for (Res subSet : resultSet.getSubSets()) {
+            for (Res subSet : resultSet.getSubResultSets()) {
                 play(subSet);
             }
         }
@@ -59,17 +59,27 @@ public class Domino {
     }
 
     private void printSolutions(Grid grid) {
-        System.out.println("[*]"); // TODO - determine width
-        System.out.println("Grid:");
-        System.out.println("[*]"); // TODO - determine width
-        grid.printGrid();
-        System.out.println("Solutions:");
-        System.out.println("[=]"); // TODO - determine width
-        for (Grid solution : solutions) {
-            solution.printGrid();
-            System.out.println("[-]"); // TODO - determine width
+        StringBuilder string = new StringBuilder();
+        string.append(createSymbolString("*", grid.getWidth()*grid.getElementWidth())).append("\n");
+        string.append("Grid:").append("\n");
+        string.append(grid).append("\n");
+        string.append(createSymbolString("*", grid.getWidth()*grid.getElementWidth())).append("\n");
+        string.append("Solutions:").append("\n");
+        string.append(createSymbolString("=", grid.getWidth()*grid.getElementWidth())).append("\n");
+        for (Grid solutionGrid : solutions) {
+            string.append(solutionGrid).append("\n");
+            string.append(createSymbolString("-", grid.getWidth()*grid.getElementWidth())).append("\n");
         }
-        System.out.println("Finished with " + solutions.size() + " solutions.");
+        string.append("Finished with ").append(solutions.size()).append(" solutions.");
+        System.out.println(string.toString());
+    }
+
+    private String createSymbolString(String symbol, int length) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < length; i++){
+            stringBuilder.append(symbol);
+        }
+        return stringBuilder.toString();
     }
 
 }

@@ -6,6 +6,8 @@ package resources;
  */
 public class Bone {
 
+    private static final int MAX_BONE_VALUE = 6;
+
     private int b1;
     private int b2;
 
@@ -19,9 +21,9 @@ public class Bone {
         }
     }
 
-    public int getBoneNum(int maxBoneNum) {
+    public int getBoneNum() {
         int sum = 0;
-        for (int i = maxBoneNum - b1; i < maxBoneNum; i++) {
+        for (int i = MAX_BONE_VALUE - b1; i < MAX_BONE_VALUE; i++) {
             sum += i;
         }
         return sum + b2 + 1;

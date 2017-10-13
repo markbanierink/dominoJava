@@ -18,11 +18,7 @@ public class Pos {
         return loc;
     }
 
-    public Bone getBone() {
-        return bone;
-    }
-
-    public int getBoneValue(int maxBoneNum) {
-        return bone.getBoneNum(maxBoneNum);
+    public int getBoneNum() {
+        return bone.getBoneNum();
     }
 }
