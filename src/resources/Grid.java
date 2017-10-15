@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
- * resources.Grid
+ * Grid
  * @author Mark Banierink on 12-10-2017.
  */
 public class Grid {
